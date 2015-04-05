@@ -15,7 +15,7 @@ public class Aux{
     public Aux(int tam){
         this.tam = tam;
     }
- 
+ /*
     public int[] toMatrix(int pos){
         int y = pos/tam;
         int x = pos-(y*tam);
@@ -26,7 +26,7 @@ public class Aux{
     public int toFixed(int x, int y){
         return ((y*tam)+x);
     }
-    
+    */
     public int[][] toAdd(int[][] array, int x, int y){
         int[][] newArray = new int[array.length+1][2];
         for(int i=0;i<array.length;i++){
