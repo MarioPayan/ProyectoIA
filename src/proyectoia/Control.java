@@ -46,12 +46,12 @@ public class Control {
     }
     
     int[] findPosEnd(){
-        posStart = new int[2];
+        posEnd = new int[2];
         for(int j=0;j<matrix.length;j++){
             for(int k=0;k<matrix.length;k++){
                 if(matrix[j][k]==7){
-                    posStart[0]=j;
-                    posStart[1]=k;
+                    posEnd[0]=j;
+                    posEnd[1]=k;
                     j=k=matrix.length;
                 }
             }
@@ -59,9 +59,9 @@ public class Control {
         return posStart;
     }
     
-    void busquedaAmplitud(){
-        BusquedaAmplitud busquedaAmplitud = new BusquedaAmplitud(matrix, posStart[0], posStart[1]);
-        busquedaAmplitud.run();
+    void busquedaAsterisco1(){
+        BusquedaAsterisco1 busquedaAsterisco1 = new BusquedaAsterisco1(matrix, posStart[0], posStart[1],posEnd[0], posEnd[1]);
+        busquedaAsterisco1.run();
     }
     
 }

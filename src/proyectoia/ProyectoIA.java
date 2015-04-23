@@ -18,7 +18,7 @@ public class ProyectoIA {
      */
     public static void main(String[] args) throws IOException {
         Control control = new Control("fichero");
-        control.busquedaAmplitud();
+        control.busquedaAsterisco1();
         
     }
     

@@ -91,5 +91,8 @@ public class Nodo {
         System.out.println("Camino: "+ pathString);
         System.out.println("Costo: " + cost);
         System.out.println("Carga: " + charge);
+        System.out.println("heuristica: " + heuristic);
+        System.out.println("f_n: " + f_n);
+        System.out.println("*****Nodos a expandir*****");
     }
 }

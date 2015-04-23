@@ -18,6 +18,7 @@ public class BusquedaAsterisco1 {
     private int endX;
     private int endY;
     private Aux2 aux;
+    private int posPrioridad = 0;
     
     private int START = 0;
     private int WALL = 1;
@@ -37,17 +38,21 @@ public class BusquedaAsterisco1 {
         aux = new Aux2(matrix.length);
         int[][] iniPath = new int[0][2];
         
-        queue.encolar(new Nodo(iniX, iniY, iniPath, 0, 6));
+        queue.encolar(new Nodo(iniX, iniY, iniPath, 0, 6, calcManhattan(iniX, iniY)));
     }
     
     void run(){
-        queue.frente().print();
-        while(!step()){queue.frente().print();}
+        posPrioridad = queue.posPrioridad();
+        queue.prioridad(posPrioridad).print();
+        while(!step()){
+            posPrioridad = queue.posPrioridad();
+            queue.prioridad(posPrioridad).print();
+        }
     }
     
     boolean step(){
-        Nodo nodoAux = (Nodo) queue.frente();
-        queue.desencolar();
+        Nodo nodoAux = (Nodo) queue.prioridad(posPrioridad);
+        queue.removerP(posPrioridad);
         return busqueda(nodoAux);
     }
     
@@ -57,17 +62,18 @@ public class BusquedaAsterisco1 {
         int cost = nodo.getCost();
         int charge = nodo.getCharge();
         
-        if(matrix[x][y]==GOAL){return true;}
+        
+        if(nodo.getHeuristic()==0){return true;}
         else if(charge==0){/*FIN*/}
         else{
             if(aux.inRange(x-1,y) && matrix[x-1][y]!=WALL && !nodo.travel(x-1, y)){
-                queue.encolar(new Nodo(x-1, y, aux.toAdd(nodo.getPath(), x, y), calcCost(cost, matrix[x-1][y]), calcCharge(charge, matrix[x-1][y])));}//Arriba
+                queue.encolar(new Nodo(x-1, y, aux.toAdd(nodo.getPath(), x, y), calcCost(cost, matrix[x-1][y]), calcCharge(charge, matrix[x-1][y]), calcManhattan(x-1, y)));}//Arriba
             if(aux.inRange(x,y-1) && matrix[x][y-1]!=WALL && !nodo.travel(x, y-1)){
-                queue.encolar(new Nodo(x, y-1, aux.toAdd(nodo.getPath(), x, y), calcCost(cost, matrix[x][y-1]), calcCharge(charge, matrix[x][y-1])));}//Izquierda
+                queue.encolar(new Nodo(x, y-1, aux.toAdd(nodo.getPath(), x, y), calcCost(cost, matrix[x][y-1]), calcCharge(charge, matrix[x][y-1]), calcManhattan(x, y-1)));}//Izquierda
             if(aux.inRange(x+1,y) && matrix[x+1][y]!=WALL && !nodo.travel(x+1, y)){
-                queue.encolar(new Nodo(x+1, y, aux.toAdd(nodo.getPath(), x, y), calcCost(cost, matrix[x+1][y]), calcCharge(charge, matrix[x+1][y])));}//Abajo
+                queue.encolar(new Nodo(x+1, y, aux.toAdd(nodo.getPath(), x, y), calcCost(cost, matrix[x+1][y]), calcCharge(charge, matrix[x+1][y]), calcManhattan(x+1, y)));}//Abajo
             if(aux.inRange(x,y+1) && matrix[x][y+1]!=WALL && !nodo.travel(x, y+1)){
-                queue.encolar(new Nodo(x, y+1, aux.toAdd(nodo.getPath(), x, y), calcCost(cost, matrix[x][y+1]), calcCharge(charge, matrix[x][y+1])));}//Derecha
+                queue.encolar(new Nodo(x, y+1, aux.toAdd(nodo.getPath(), x, y), calcCost(cost, matrix[x][y+1]), calcCharge(charge, matrix[x][y+1]), calcManhattan(x, y+1)));}//Derecha
         }
         return false;
     }
@@ -86,7 +92,13 @@ public class BusquedaAsterisco1 {
         else{return chargeAct-1;}
     }
     
-    int calcManhattan(){
-        
+    public int calcManhattan(int posx, int posy){
+        int distanciaL = 0;
+        int distanciaX = Math.abs(posx - endX);
+        int distanciaY = Math.abs(posy - endY);
+        distanciaL = distanciaX + distanciaY;
+         
+        return distanciaL;
     }
+   
 }
