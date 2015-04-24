@@ -15,7 +15,7 @@ public class BusquedaAmplitud {
     private Queue queue = new Queue();
     private int iniX;
     private int iniY;
-    private Aux2 aux;
+    private Aux aux;
     
     private int START = 0;
     private int WALL = 1;
@@ -30,7 +30,7 @@ public class BusquedaAmplitud {
         this.matrix=matrix;
         this.iniX=iniX;
         this.iniY=iniY;
-        aux = new Aux2(matrix.length);
+        aux = new Aux(matrix.length);
         int[][] iniPath = new int[0][2];
         
         queue.encolar(new Nodo(iniX, iniY, iniPath, 0, 6));

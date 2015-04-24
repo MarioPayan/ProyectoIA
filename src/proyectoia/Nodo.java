@@ -72,8 +72,6 @@ public class Nodo {
         this.f_n = f_n;
     }
     
-    
-    
     boolean travel(int x, int y){
         for(int i=0;i<path.length;i++){
             if(path[i][0]==x && path[i][1]==y){return true;}
@@ -86,13 +84,13 @@ public class Nodo {
         for(int i=0;i<path.length;i++){
             pathString+="("+path[i][0]+","+path[i][1]+") ";
         }
-        System.out.println("--------------------------");
+        System.out.println("------------Pintando_Nodo------------");
         System.out.println("Posicion: ("+ x + "," + y + ")");
         System.out.println("Camino: "+ pathString);
         System.out.println("Costo: " + cost);
         System.out.println("Carga: " + charge);
         System.out.println("heuristica: " + heuristic);
         System.out.println("f_n: " + f_n);
-        System.out.println("*****Nodos a expandir*****");
+        System.out.println("*************************************");
     }
 }

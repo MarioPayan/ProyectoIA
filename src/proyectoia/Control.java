@@ -21,13 +21,15 @@ public class Control {
         Reader reader = new Reader(fileIn);
         this.matrix=reader.getMatrix();
         
+        System.out.println("##### Lectura y datos iniciales #####");
+        
         findPosStart();
-        System.out.println("Posicion de inicio: "+posStart[0]+"-"+posStart[1]);
+        System.out.println("Posicion inicial: "+posStart[0]+"-"+posStart[1]);
         
         findPosEnd();
         System.out.println("Posicion final: "+posEnd[0]+"-"+posEnd[1]);
         
-        Aux2 aux = new Aux2(matrix.length);
+        Aux aux = new Aux(matrix.length);
         aux.printMatrix(matrix);
     }
     
@@ -56,12 +58,19 @@ public class Control {
                 }
             }
         }
-        return posStart;
+        return posEnd;
     }
     
     void busquedaAsterisco1(){
+        System.out.println("########## Inicio de busqueda A* ##########");
         BusquedaAsterisco1 busquedaAsterisco1 = new BusquedaAsterisco1(matrix, posStart[0], posStart[1],posEnd[0], posEnd[1]);
         busquedaAsterisco1.run();
+        System.out.println("\n");
     }
-    
+    void busquedaAmplitud(){
+        System.out.println("##### Inicio de busqueda por Amplitud #####");
+        BusquedaAmplitud busquedaAmplitud = new BusquedaAmplitud(matrix, posStart[0], posStart[1]);
+        busquedaAmplitud.run();
+        System.out.println("\n");
+    }
 }

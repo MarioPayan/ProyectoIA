@@ -19,7 +19,6 @@ public class ProyectoIA {
     public static void main(String[] args) throws IOException {
         Control control = new Control("fichero");
         control.busquedaAsterisco1();
-        
+        control.busquedaAmplitud();
     }
-    
 }

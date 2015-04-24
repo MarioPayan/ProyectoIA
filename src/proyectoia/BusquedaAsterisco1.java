@@ -17,7 +17,7 @@ public class BusquedaAsterisco1 {
     private int iniY;
     private int endX;
     private int endY;
-    private Aux2 aux;
+    private Aux aux;
     private int posPrioridad = 0;
     
     private int START = 0;
@@ -35,7 +35,7 @@ public class BusquedaAsterisco1 {
         this.iniY=iniY;
         this.endX=endX;
         this.endY=endY;
-        aux = new Aux2(matrix.length);
+        aux = new Aux(matrix.length);
         int[][] iniPath = new int[0][2];
         
         queue.encolar(new Nodo(iniX, iniY, iniPath, 0, 6, calcManhattan(iniX, iniY)));
@@ -61,7 +61,6 @@ public class BusquedaAsterisco1 {
         int y = nodo.getY();
         int cost = nodo.getCost();
         int charge = nodo.getCharge();
-        
         
         if(nodo.getHeuristic()==0){return true;}
         else if(charge==0){/*FIN*/}
@@ -100,5 +99,4 @@ public class BusquedaAsterisco1 {
          
         return distanciaL;
     }
-   
 }

@@ -10,24 +10,13 @@ package proyectoia;
  *
  * @author Santa Gutierrez
  */
-public class Aux2 {
+public class Aux {
      private int tam = 0;
  
-    public Aux2(int tam){
+    public Aux(int tam){
         this.tam = tam;
     }
- /*
-    public int[] toMatrix(int pos){
-        int y = pos/tam;
-        int x = pos-(y*tam);
-        int[] posF = {x,y};
-        return posF;
-    }
-    
-    public int toFixed(int x, int y){
-        return ((y*tam)+x);
-    }
-    */
+
     public int[][] toAdd(int[][] array, int x, int y){
         int[][] newArray = new int[array.length+1][2];
         for(int i=0;i<array.length;i++){
@@ -47,7 +36,7 @@ public class Aux2 {
     }
     
     public void printMatrix(int[][] matrix){
-        System.out.println("--------------------------");
+        System.out.println("---------Pintando_Matriz-----------");
         String line="";
         for(int i=0;i<tam;i++){
             for(int j=0;j<tam;j++){
@@ -56,6 +45,6 @@ public class Aux2 {
             System.out.println(line);
             line="";
         }
-        System.out.println("--------------------------");
+        System.out.println("************************************ \n");
     }
 }
